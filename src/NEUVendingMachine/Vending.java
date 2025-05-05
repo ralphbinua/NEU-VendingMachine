@@ -17,7 +17,7 @@ public class Vending extends javax.swing.JFrame {
     public Vending() {
         initComponents();
     }
-    
+
     private int totalMoneyInsert, productPrice;
     private String productNames;
     /**
@@ -33,8 +33,6 @@ public class Vending extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -175,11 +173,6 @@ public class Vending extends javax.swing.JFrame {
 
         cancelPaymentButton.setText("Cancel");
         cancelPaymentButton.setFocusPainted(false);
-        cancelPaymentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelPaymentButtonActionPerformed(evt);
-            }
-        });
 
         applyPaymentButton.setText("Apply");
         applyPaymentButton.setFocusPainted(false);
@@ -337,7 +330,7 @@ public class Vending extends javax.swing.JFrame {
                     .addComponent(option3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(option0Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(applyPaymentButton)
                     .addComponent(cancelPaymentButton))
@@ -935,9 +928,13 @@ public class Vending extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -991,10 +988,7 @@ public class Vending extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(20, 20, 20)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -1044,57 +1038,57 @@ public class Vending extends javax.swing.JFrame {
             showChange(change);
             showDispense(productName);
         }
-            insertedMoney.setText(Integer.toString(0));
+        insertedMoney.setText(Integer.toString(0));
     }//GEN-LAST:event_applyPaymentButtonActionPerformed
 
     private void option1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ButtonActionPerformed
        selectProduct(product1.getText(), Integer.parseInt(option1Price.getText()));
-       option1Button.setBackground(new Color(0x0015300));              
+       option1Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option1ButtonActionPerformed
 
     private void option2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option2ButtonActionPerformed
         selectProduct(product2.getText(), Integer.parseInt(option2Price.getText()));
-       option2Button.setBackground(new Color(0x0015300));  
+       option2Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option2ButtonActionPerformed
 
     private void option3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option3ButtonActionPerformed
         selectProduct(product3.getText(), Integer.parseInt(option3Price.getText()));
-       option3Button.setBackground(new Color(0x0015300));  
+       option3Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option3ButtonActionPerformed
 
     private void option4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option4ButtonActionPerformed
         selectProduct(product4.getText(), Integer.parseInt(option4Price.getText()));
-       option4Button.setBackground(new Color(0x0015300));  
+       option4Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option4ButtonActionPerformed
 
     private void option5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option5ButtonActionPerformed
         selectProduct(product5.getText(), Integer.parseInt(option5Price.getText()));
-       option5Button.setBackground(new Color(0x0015300));  
+       option5Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option5ButtonActionPerformed
 
     private void option6ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option6ButtonActionPerformed
         selectProduct(product6.getText(), Integer.parseInt(option6Price.getText()));
-       option6Button.setBackground(new Color(0x0015300));  
+       option6Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option6ButtonActionPerformed
 
     private void option7ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option7ButtonActionPerformed
        // selectProduct(product7.getText(), Integer.parseInt(option7Price.getText()));
-       option7Button.setBackground(new Color(0x0015300));  
+       option7Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option7ButtonActionPerformed
 
     private void option8ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option8ButtonActionPerformed
        // selectProduct(product8.getText(), Integer.parseInt(option8Price.getText()));
-       option8Button.setBackground(new Color(0x0015300));  
+       option8Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option8ButtonActionPerformed
 
     private void option9ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option9ButtonActionPerformed
      //   selectProduct(product9.getText(), Integer.parseInt(option9Price.getText()));
-       option9Button.setBackground(new Color(0x0015300));  
+       option9Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option9ButtonActionPerformed
 
     private void option0ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option0ButtonActionPerformed
      //   selectProduct(product0.getText(), Integer.parseInt(option0Price.getText()));
-       option0Button.setBackground(new Color(0x0015300));  
+       option0Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option0ButtonActionPerformed
 
     private void cancelPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelPaymentButtonActionPerformed
@@ -1104,11 +1098,11 @@ public class Vending extends javax.swing.JFrame {
     private void showChange(int change){
         JOptionPane.showMessageDialog(this, "Change " + change,null, JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     private void showDispense(String productName){
         JOptionPane.showMessageDialog(this, "Dispense: " + productName, null, JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     private void addMoney(int amount) {
     // Get the current amount from the text field
     totalMoneyInsert = 0;
@@ -1118,19 +1112,19 @@ public class Vending extends javax.swing.JFrame {
         // If the text is not a valid number, start from 0
         totalMoneyInsert = 0;
     }
-    
+
     // Add the new amount
     totalMoneyInsert += amount;
-    
+
     // Update the text field with the new total
     insertedMoney.setText(Integer.toString(totalMoneyInsert));
 }
-    
+
     private void selectProduct(String productName, int price) {
     productNames = productName;
     productPrice = price;
 }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -1138,7 +1132,7 @@ public class Vending extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1169,8 +1163,6 @@ public class Vending extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton applyPaymentButton;
     private javax.swing.JButton applyVoucherButton;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton cancelPaymentButton;
     private javax.swing.JLabel insertedMoney;
     private javax.swing.JButton jButton15;
