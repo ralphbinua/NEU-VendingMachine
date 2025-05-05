@@ -33,6 +33,8 @@ public class Vending extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -173,6 +175,11 @@ public class Vending extends javax.swing.JFrame {
 
         cancelPaymentButton.setText("Cancel");
         cancelPaymentButton.setFocusPainted(false);
+        cancelPaymentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelPaymentButtonActionPerformed(evt);
+            }
+        });
 
         applyPaymentButton.setText("Apply");
         applyPaymentButton.setFocusPainted(false);
@@ -184,21 +191,51 @@ public class Vending extends javax.swing.JFrame {
 
         option7Button.setText("7");
         option7Button.setFocusPainted(false);
+        option7Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option7ButtonActionPerformed(evt);
+            }
+        });
 
         option8Button.setText("8");
         option8Button.setFocusPainted(false);
+        option8Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option8ButtonActionPerformed(evt);
+            }
+        });
 
         option9Button.setText("9");
         option9Button.setFocusPainted(false);
+        option9Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option9ButtonActionPerformed(evt);
+            }
+        });
 
         option4Button.setText("4");
         option4Button.setFocusPainted(false);
+        option4Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option4ButtonActionPerformed(evt);
+            }
+        });
 
         option5Button.setText("5");
         option5Button.setFocusPainted(false);
+        option5Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option5ButtonActionPerformed(evt);
+            }
+        });
 
         option6Button.setText("6");
         option6Button.setFocusPainted(false);
+        option6Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option6ButtonActionPerformed(evt);
+            }
+        });
 
         option1Button.setText("1");
         option1Button.setFocusPainted(false);
@@ -210,12 +247,27 @@ public class Vending extends javax.swing.JFrame {
 
         option2Button.setText("2");
         option2Button.setFocusPainted(false);
+        option2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option2ButtonActionPerformed(evt);
+            }
+        });
 
         option3Button.setText("3");
         option3Button.setFocusPainted(false);
+        option3Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option3ButtonActionPerformed(evt);
+            }
+        });
 
         option0Button.setText("0");
         option0Button.setFocusPainted(false);
+        option0Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option0ButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -285,7 +337,7 @@ public class Vending extends javax.swing.JFrame {
                     .addComponent(option3Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(option0Button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(applyPaymentButton)
                     .addComponent(cancelPaymentButton))
@@ -883,13 +935,9 @@ public class Vending extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -943,7 +991,10 @@ public class Vending extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -993,13 +1044,62 @@ public class Vending extends javax.swing.JFrame {
             showChange(change);
             showDispense(productName);
         }
-        
+            insertedMoney.setText(Integer.toString(0));
     }//GEN-LAST:event_applyPaymentButtonActionPerformed
 
     private void option1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ButtonActionPerformed
        selectProduct(product1.getText(), Integer.parseInt(option1Price.getText()));
        option1Button.setBackground(new Color(0x0015300));              
     }//GEN-LAST:event_option1ButtonActionPerformed
+
+    private void option2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option2ButtonActionPerformed
+        selectProduct(product2.getText(), Integer.parseInt(option2Price.getText()));
+       option2Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option2ButtonActionPerformed
+
+    private void option3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option3ButtonActionPerformed
+        selectProduct(product3.getText(), Integer.parseInt(option3Price.getText()));
+       option3Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option3ButtonActionPerformed
+
+    private void option4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option4ButtonActionPerformed
+        selectProduct(product4.getText(), Integer.parseInt(option4Price.getText()));
+       option4Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option4ButtonActionPerformed
+
+    private void option5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option5ButtonActionPerformed
+        selectProduct(product5.getText(), Integer.parseInt(option5Price.getText()));
+       option5Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option5ButtonActionPerformed
+
+    private void option6ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option6ButtonActionPerformed
+        selectProduct(product6.getText(), Integer.parseInt(option6Price.getText()));
+       option6Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option6ButtonActionPerformed
+
+    private void option7ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option7ButtonActionPerformed
+       // selectProduct(product7.getText(), Integer.parseInt(option7Price.getText()));
+       option7Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option7ButtonActionPerformed
+
+    private void option8ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option8ButtonActionPerformed
+       // selectProduct(product8.getText(), Integer.parseInt(option8Price.getText()));
+       option8Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option8ButtonActionPerformed
+
+    private void option9ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option9ButtonActionPerformed
+     //   selectProduct(product9.getText(), Integer.parseInt(option9Price.getText()));
+       option9Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option9ButtonActionPerformed
+
+    private void option0ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option0ButtonActionPerformed
+     //   selectProduct(product0.getText(), Integer.parseInt(option0Price.getText()));
+       option0Button.setBackground(new Color(0x0015300));  
+    }//GEN-LAST:event_option0ButtonActionPerformed
+
+    private void cancelPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelPaymentButtonActionPerformed
+        insertedMoney.setText(Integer.toString(0));
+    }//GEN-LAST:event_cancelPaymentButtonActionPerformed
 
     private void showChange(int change){
         JOptionPane.showMessageDialog(this, "Change " + change,null, JOptionPane.INFORMATION_MESSAGE);
@@ -1069,6 +1169,8 @@ public class Vending extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton applyPaymentButton;
     private javax.swing.JButton applyVoucherButton;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton cancelPaymentButton;
     private javax.swing.JLabel insertedMoney;
     private javax.swing.JButton jButton15;
