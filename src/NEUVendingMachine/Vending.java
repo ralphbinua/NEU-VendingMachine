@@ -5,6 +5,9 @@
 package NEUVendingMachine;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 /**
  *
  * @author Ralph
@@ -16,10 +19,31 @@ public class Vending extends javax.swing.JFrame {
      */
     public Vending() {
         initComponents();
+        initializeProducts();
     }
 
-    private int totalMoneyInsert, productPrice;
+    private int totalMoneyInsert;
     private String productNames;
+    private int productPrice;
+    private ArrayList<Product> products;
+
+    private void initializeProducts() {
+        products = new ArrayList<>();
+        products.add(new Product("NEU Fair T Shirt", 450, 10));
+        products.add(new Product("NEU Fair Hoodie", 550, 10));
+        products.add(new Product("NEU Fair Mug", 250, 10));
+        products.add(new Product("Ballpen", 15, 10));
+        products.add(new Product("NEU Lanyard", 150, 10));
+        products.add(new Product("Tote Bag", 100, 10));
+    }
+    private void selectProduct(int index) {
+        Product selectedProduct = products.get(index);
+        if (selectedProduct.getStock() > 0 && totalMoneyInsert >= selectedProduct.getPrice()) {
+            totalMoneyInsert -= selectedProduct.getPrice();
+            showDispense(selectedProduct.getName());
+            showChange(totalMoneyInsert);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1026,7 +1050,7 @@ public class Vending extends javax.swing.JFrame {
     private void money1000MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_money1000MouseClicked
         // add 1000
         addMoney(1000);
-    }//GEN-LAST:event_money1000MouseClicked
+    }//GEN-LAST:event_money1000MouseClicked ahello
 
     private void applyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyPaymentButtonActionPerformed
 
@@ -1042,33 +1066,33 @@ public class Vending extends javax.swing.JFrame {
     }//GEN-LAST:event_applyPaymentButtonActionPerformed
 
     private void option1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ButtonActionPerformed
-       selectProduct(product1.getText(), Integer.parseInt(option1Price.getText()));
-       option1Button.setBackground(new Color(0x0015300));
+        selectProduct(0);
+        option1Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option1ButtonActionPerformed
 
     private void option2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option2ButtonActionPerformed
-        selectProduct(product2.getText(), Integer.parseInt(option2Price.getText()));
-       option2Button.setBackground(new Color(0x0015300));
+        selectProduct(1);
+        option2Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option2ButtonActionPerformed
 
     private void option3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option3ButtonActionPerformed
-        selectProduct(product3.getText(), Integer.parseInt(option3Price.getText()));
-       option3Button.setBackground(new Color(0x0015300));
+        selectProduct(2);
+        option3Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option3ButtonActionPerformed
 
     private void option4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option4ButtonActionPerformed
-        selectProduct(product4.getText(), Integer.parseInt(option4Price.getText()));
-       option4Button.setBackground(new Color(0x0015300));
+        selectProduct(3);
+        option4Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option4ButtonActionPerformed
 
     private void option5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option5ButtonActionPerformed
-        selectProduct(product5.getText(), Integer.parseInt(option5Price.getText()));
-       option5Button.setBackground(new Color(0x0015300));
+        selectProduct(4);
+        option5Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option5ButtonActionPerformed
 
     private void option6ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option6ButtonActionPerformed
-        selectProduct(product6.getText(), Integer.parseInt(option6Price.getText()));
-       option6Button.setBackground(new Color(0x0015300));
+        selectProduct(5);
+        option6Button.setBackground(new Color(0x0015300));
     }//GEN-LAST:event_option6ButtonActionPerformed
 
     private void option7ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option7ButtonActionPerformed
