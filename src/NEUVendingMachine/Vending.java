@@ -26,6 +26,7 @@ public class Vending extends javax.swing.JFrame {
     private String productNames;
     private int productPrice;
     private ArrayList<Product> products;
+    private int selectedProductIndex = -1;
 
     private void initializeProducts() {
         products = new ArrayList<>();
@@ -37,12 +38,8 @@ public class Vending extends javax.swing.JFrame {
         products.add(new Product("Tote Bag", 100, 10));
     }
     private void selectProduct(int index) {
-        Product selectedProduct = products.get(index);
-        if (selectedProduct.getStock() > 0 && totalMoneyInsert >= selectedProduct.getPrice()) {
-            totalMoneyInsert -= selectedProduct.getPrice();
-            showDispense(selectedProduct.getName());
-            showChange(totalMoneyInsert);
-        }
+        selectedProductIndex = index;
+        Product selectedProduct = products.get(selectedProductIndex); 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1047,22 +1044,25 @@ public class Vending extends javax.swing.JFrame {
         addMoney(500);
     }//GEN-LAST:event_money500MouseClicked
 
-    private void money1000MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_money1000MouseClicked
+    private void money1000MouseClicked(java.awt.event.MouseEvent evt) {                                       
         // add 1000
         addMoney(1000);
-    }//GEN-LAST:event_money1000MouseClicked ahello
+    }                                             
 
     private void applyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyPaymentButtonActionPerformed
 
-        if(totalMoneyInsert < productPrice){
+        Product selectedProduct = products.get(selectedProductIndex);
+            
+        if(totalMoneyInsert < selectedProduct.getPrice()){
             JOptionPane.showMessageDialog(this, "Insufficient Payment", null, JOptionPane.INFORMATION_MESSAGE);
         }else{
-            int change = totalMoneyInsert - productPrice;
-            String productName = productNames;
+            int change = totalMoneyInsert - selectedProduct.getPrice();
+            String productName = selectedProduct.getName();
             showChange(change);
             showDispense(productName);
         }
         insertedMoney.setText(Integer.toString(0));
+        
     }//GEN-LAST:event_applyPaymentButtonActionPerformed
 
     private void option1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ButtonActionPerformed
