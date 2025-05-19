@@ -9,6 +9,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 /**
+ * Vending class demonstrating Object-Oriented Programming principles:
+ *
+ * 1. Inheritance:
+ *    - Extends javax.swing.JFrame to create a GUI window
+ *    - Inherits window functionality from JFrame
+ *
+ * 2. Composition:
+ *    - Contains a VendingMachine instance (has-a relationship)
+ *    - Uses Product objects through the VendingMachine
+ *
+ * 3. Single Responsibility Principle:
+ *    - Focuses solely on UI concerns
+ *    - Delegates business logic to VendingMachine class
+ *    - Handles user interaction and display updates
+ *
+ * 4. Separation of Concerns:
+ *    - UI logic is separated from business logic
+ *    - Display updates are handled independently
+ *    - Event handling is isolated from core functionality
  *
  * @author Ralph
  */
@@ -17,9 +36,12 @@ public class Vending extends javax.swing.JFrame {
     /**
      * Creates new form Vending
      */
+    private VendingMachine vendingMachine;
+
     public Vending() {
         initComponents();
-        initializeProducts();
+        vendingMachine = new VendingMachine();
+        updateProductDisplay();
     }
 
     private int totalMoneyInsert;
@@ -38,8 +60,24 @@ public class Vending extends javax.swing.JFrame {
         products.add(new Product("Tote Bag", 100, 10));
     }
     private void selectProduct(int index) {
-        selectedProductIndex = index;
-        Product selectedProduct = products.get(selectedProductIndex); 
+        vendingMachine.selectProduct(index);
+        // Reset button colors
+        option1Button.setBackground(null);
+        option2Button.setBackground(null);
+        option3Button.setBackground(null);
+        option4Button.setBackground(null);
+        option5Button.setBackground(null);
+        option6Button.setBackground(null);
+
+        // Set selected button color
+        switch(index) {
+            case 0: option1Button.setBackground(new Color(0x0015300)); break;
+            case 1: option2Button.setBackground(new Color(0x0015300)); break;
+            case 2: option3Button.setBackground(new Color(0x0015300)); break;
+            case 3: option4Button.setBackground(new Color(0x0015300)); break;
+            case 4: option5Button.setBackground(new Color(0x0015300)); break;
+            case 5: option6Button.setBackground(new Color(0x0015300)); break;
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1044,26 +1082,38 @@ public class Vending extends javax.swing.JFrame {
         addMoney(500);
     }//GEN-LAST:event_money500MouseClicked
 
-    private void money1000MouseClicked(java.awt.event.MouseEvent evt) {                                       
+    private void money1000MouseClicked(java.awt.event.MouseEvent evt) {
         // add 1000
         addMoney(1000);
-    }                                             
+    }
 
-    private void applyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyPaymentButtonActionPerformed
-
-        Product selectedProduct = products.get(selectedProductIndex);
-            
-        if(totalMoneyInsert < selectedProduct.getPrice()){
+    private void applyPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if (!vendingMachine.canPurchase()) {
             JOptionPane.showMessageDialog(this, "Insufficient Payment", null, JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            int change = totalMoneyInsert - selectedProduct.getPrice();
-            String productName = selectedProduct.getName();
-            showChange(change);
-            showDispense(productName);
+            return;
         }
-        insertedMoney.setText(Integer.toString(0));
-        
-    }//GEN-LAST:event_applyPaymentButtonActionPerformed
+
+        Product selectedProduct = vendingMachine.getSelectedProduct();
+        if (selectedProduct != null && selectedProduct.isInStock()) {
+            int change = vendingMachine.calculateChange();
+            selectedProduct.decrementStock();
+            updateProductDisplay();
+            showChange(change);
+            showDispense(selectedProduct.getName());
+            vendingMachine.resetMoney();
+            insertedMoney.setText("0");
+
+            // Reset all button backgrounds after purchase
+            option1Button.setBackground(null);
+            option2Button.setBackground(null);
+            option3Button.setBackground(null);
+            option4Button.setBackground(null);
+            option5Button.setBackground(null);
+            option6Button.setBackground(null);
+        } else {
+            JOptionPane.showMessageDialog(this, "Product out of stock", null, JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
     private void option1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ButtonActionPerformed
         selectProduct(0);
@@ -1116,7 +1166,8 @@ public class Vending extends javax.swing.JFrame {
     }//GEN-LAST:event_option0ButtonActionPerformed
 
     private void cancelPaymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelPaymentButtonActionPerformed
-        insertedMoney.setText(Integer.toString(0));
+        vendingMachine.resetMoney();
+        insertedMoney.setText("0");
     }//GEN-LAST:event_cancelPaymentButtonActionPerformed
 
     private void showChange(int change){
@@ -1128,26 +1179,38 @@ public class Vending extends javax.swing.JFrame {
     }
 
     private void addMoney(int amount) {
-    // Get the current amount from the text field
-    totalMoneyInsert = 0;
-    try {
-        totalMoneyInsert = Integer.parseInt(insertedMoney.getText());
-    } catch (NumberFormatException e) {
-        // If the text is not a valid number, start from 0
-        totalMoneyInsert = 0;
+        vendingMachine.insertMoney(amount);
+        insertedMoney.setText(String.valueOf(vendingMachine.getTotalMoneyInserted()));
     }
 
-    // Add the new amount
-    totalMoneyInsert += amount;
+    private void updateProductDisplay() {
+        ArrayList<Product> products = vendingMachine.getProducts();
+        if (products.size() >= 6) {
+            product1.setText(products.get(0).getName());
+            option1Price.setText(String.valueOf(products.get(0).getPrice()));
+            option1Stock.setText(String.valueOf(products.get(0).getStock()));
 
-    // Update the text field with the new total
-    insertedMoney.setText(Integer.toString(totalMoneyInsert));
-}
+            product2.setText(products.get(1).getName());
+            option2Price.setText(String.valueOf(products.get(1).getPrice()));
+            option2Stock.setText(String.valueOf(products.get(1).getStock()));
 
-    private void selectProduct(String productName, int price) {
-    productNames = productName;
-    productPrice = price;
-}
+            product3.setText(products.get(2).getName());
+            option3Price.setText(String.valueOf(products.get(2).getPrice()));
+            option3Stock.setText(String.valueOf(products.get(2).getStock()));
+
+            product4.setText(products.get(3).getName());
+            option4Price.setText(String.valueOf(products.get(3).getPrice()));
+            option4Stock.setText(String.valueOf(products.get(3).getStock()));
+
+            product5.setText(products.get(4).getName());
+            option5Price.setText(String.valueOf(products.get(4).getPrice()));
+            option5Stock.setText(String.valueOf(products.get(4).getStock()));
+
+            product6.setText(products.get(5).getName());
+            option6Price.setText(String.valueOf(products.get(5).getPrice()));
+            option6Stock.setText(String.valueOf(products.get(5).getStock()));
+        }
+    }
 
     /**
      * @param args the command line arguments
